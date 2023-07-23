@@ -1,0 +1,72 @@
+#include "ui_mp/includes/menudef.h"
+#include "ui_mp/includes/macros.h"
+
+//#include "ui_mp/includes/widgets/choice_button.h"
+//#include "ui_mp/includes/widgets/choice_separator.h"
+#include "ui_mp/includes/widgets/back_button.h"
+
+#include "ui_mp/main2.inc"
+
+#define MENU_NAME									"mods_menu"
+#define MENU_MUSIC									"music_mainmenu_mp"
+#define MENU_BACKGROUND	                            "mw2_main_co_image"
+#define MENU_TITLE									"MODS"
+
+
+
+menuDef
+{
+	name 				MENU_NAME
+	rect 				0 0 640 480 4 4;
+	focuscolor			1 1 1 1
+	soundloop			MENU_MUSIC
+	onOpen
+	{
+	    setFocus										"modlist";
+	}
+	onEsc
+	{
+		open "main_text";
+	}
+	
+	#include "ui_mp/includes/background.h"
+	#include "ui_mp/includes/widgets/playercard.h"
+
+
+	//#define DISABLE_SIDEBAR
+	//#include "ui_mp/bg.inc"
+	//#include "ui_mp/includes/background.h"
+
+    BACK_BUTTON( close "self"; open "main_text", 1 )
+	
+	
+	
+
+	itemDef
+	{
+		name										"modlist"
+		rect										-18 41 230 350 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+		style										WINDOW_STYLE_FILLED
+		foreColor									1 1 1 1
+		backColor									0 0 0 0.5
+		outlineColor								0 0 0 0.6
+		type										ITEM_TYPE_LISTBOX
+		textFont									CHOICE_TEXTFONT
+		textAlignX									6
+		textScale									CHOICE_TEXTSIZE
+		feeder										FEEDER_MODS
+		selectBorder								0.8 0.95 1 0
+		elementWidth								120
+		elementHeight								22
+		visible										1
+//		numcols			xpos		xwidth		textlen		alignment
+		columns 1		8			120			25			0
+		doubleClick
+		{
+			uiScript "RunMod";
+		}
+		MENU_EXEC_KEYINT(13, uiScript "RunMod";)
+	}
+	
+
+}

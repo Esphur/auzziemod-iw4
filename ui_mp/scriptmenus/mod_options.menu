@@ -1,0 +1,59 @@
+#include "ui/menudef.h"
+#include "ui_mp/common/redux.inc"
+
+#define MENU_NAME					"mod_options"
+#define MENU_TITLE					"MOD OPTIONS"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+	onRequestClose
+	{
+		open "class";
+	}
+
+	REDUX_BUTTON( 0, "LOAD POSITION", exec "loadpos"; close "self"; close "class"; )
+	REDUX_BUTTON( 1, "SAVE POSITION", exec "savepos"; close "self"; close "class"; )
+	REDUX_BUTTON( 2, "ROUND RESET", exec "roundreset"; close "self"; close "class"; )
+	REDUX_BUTTON( 3, "UFO TOGGLE", exec "ufomode"; close "self"; close "class"; )
+    REDUX_BUTTON( 4, "ALT SWAP TOGGLE", exec "altswap"; close "self"; close "class"; )
+	REDUX_BUTTON( 5, "DROP WEAPON", exec "dropwep"; close "self"; close "class"; )
+
+    REDUX_BIND( 8, "UFO BIND",          "ufomode"; )
+	REDUX_BIND( 9, "LOAD POSITION BIND",   "loadpos"; )
+	REDUX_BUTTON( 10, "BOT OPTIONS", open "bot_functions"; )
+
+	
+
+
+	
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	REDUX_GAME_WIDGET
+}
+
+#undef MENU_NAME 	#define MENU_NAME		"bot_functions"
+#undef MENU_TITLE 	#define MENU_TITLE		"BOT FUNCTIONS"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+	onRequestClose
+	{
+		open "mod_options";
+	}
+
+	REDUX_BUTTON( 0, "BOT TELE", 	                 exec "bottele"; close "self"; close "self"; close "class"; )
+	REDUX_BUTTON( 1, "BOT MOVEMENT TOGGLE", 	     exec "botmovement"; close "self"; close "self"; close "class"; )
+	REDUX_BUTTON( 2, "BOT AGGRESION TOGGLE", 	     exec "botaggression"; close "self"; close "self"; close "class"; )
+
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	REDUX_GAME_WIDGET
+}

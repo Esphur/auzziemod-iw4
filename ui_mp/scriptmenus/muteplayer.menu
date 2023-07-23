@@ -1,0 +1,20 @@
+#include "ui/menudef.h"
+#include "ui_mp/common/redux.inc"
+
+#define MENU_NAME					"muteplayer"
+#define MENU_TITLE					"MUTE PLAYERS"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+
+	REDUX_GENERIC_FEEDER( FEEDER_MUTELIST, uiScript "mutePlayer";, 
+		//		numcol	xpos		xwidth		textlen	  	alignment
+		columns 2		2			46			10		  	0
+						48			172			25		  	0 )
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+}

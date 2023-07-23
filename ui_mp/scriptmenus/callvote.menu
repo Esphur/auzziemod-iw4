@@ -1,0 +1,52 @@
+#include "ui/menudef.h"
+#include "ui_mp/common/redux.inc"
+
+#define MENU_NAME					"callvote"
+#define MENU_TITLE					"CALL VOTE"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+
+	REDUX_BUTTON( 0, "Restart Map", exec "cmd callvote map_restart"; close "self"; )
+	REDUX_BUTTON( 1, "Rotate Map", exec "cmd callvote map_rotate"; close "self"; )
+	REDUX_BUTTON( 2, "Change Map", open "callvote_map"; close "self"; )
+	REDUX_BUTTON( 3, "Kick Player", open "callvote_kick"; close "self"; )
+}
+
+#undef MENU_NAME 	#define MENU_NAME		"callvote_map"
+#undef MENU_TITLE 	#define MENU_TITLE		"VOTE: CHANGE MAP"
+
+menudef
+{
+	REDUX_INGAME_MENU( false )
+	onRequestClose
+	{
+		open "callvote";
+	}
+
+	REDUX_GENERIC_FEEDER( FEEDER_ALLMAPS, uiScript "voteMap";, 
+		//		numcol	xpos		xwidth		textlen	  	alignment
+		columns 1 		2 			190 		25			0 )
+}
+
+#undef MENU_NAME 	#define MENU_NAME		"callvote_kick"
+#undef MENU_TITLE 	#define MENU_TITLE		"VOTE: KICK PLAYER"
+
+menudef
+{
+	REDUX_INGAME_MENU( false )
+	onRequestClose
+	{
+		open "callvote";
+	}
+
+	REDUX_GENERIC_FEEDER( FEEDER_PLAYER_LIST, uiScript "voteKick";, 
+		//		numcol	xpos		xwidth		textlen	  	alignment
+		columns 1 		2 			190 		25			0 )
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+}

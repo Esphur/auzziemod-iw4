@@ -1,0 +1,223 @@
+#include "ui/menudef.h"
+#include "ui_mp/common/redux.inc"
+
+
+#define MENU_NAME					"class"
+#define MENU_TITLE					"ZEN PACK"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+
+	REDUX_BUTTON( 0, "CLASS OPTIONS", CHANGE_CLASS_ACTION; )
+	REDUX_BUTTON( 1, "MOD OPTIONS", close "self"; open "mod_options"; )
+	REDUX_BUTTON( 2, "MAP OPTIONS", close "self"; open "map_change"; )
+	REDUX_BUTTON( 3, "KILLSTREAK OPTIONS", close "self"; open "streak_options"; )
+	REDUX_BUTTON( 4, "GAME OPTIONS", close "self"; open "pc_options_video"; )
+	REDUX_BUTTON_VIS( 10, "BACK TO THE LOBBY", exec "disconnect";, dvarBool( "sv_running" ) )
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	REDUX_GAME_WIDGET // map
+}
+
+#undef MENU_NAME 	#define MENU_NAME		"map_change"
+#undef MENU_TITLE 	#define MENU_TITLE		"MAP CHANGE"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+	onRequestClose
+	{
+		open "class";
+	}
+
+	REDUX_BUTTON( 0, "BASE MAPS", open "base_maps"; )
+	REDUX_BUTTON( 1, "DLC MAPS", open "dlc_maps"; )
+	REDUX_BUTTON( 2, "CUSTOM MAPS", open "custom_maps"; )
+
+	
+	
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	REDUX_GAME_WIDGET
+}
+
+#undef MENU_NAME 	#define MENU_NAME		"base_maps"
+#undef MENU_TITLE 	#define MENU_TITLE		"BASE MAPS"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+	onRequestClose
+	{
+		open "class";
+	}
+
+	REDUX_BUTTON( 0, "AFGHAN", exec "devmap mp_afghan"; )
+	REDUX_BUTTON( 1, "DERAIL", exec "devmap mp_derail"; )
+	REDUX_BUTTON( 2, "ESTATE", exec "devmap mp_estate"; )
+	REDUX_BUTTON( 3, "FAVELA", exec "devmap mp_favela"; )
+	REDUX_BUTTON( 4, "HIGHRISE", exec "devmap mp_highrise"; )
+	REDUX_BUTTON( 5, "INVASION", exec "devmap mp_invasion"; )
+	REDUX_BUTTON( 6, "KARACHI", exec "devmap mp_checkpoint"; )
+	REDUX_BUTTON( 7, "QUARRY", exec "devmap mp_quarry"; )
+
+	REDUX_BUTTON( 10, "NEXT PAGE", open "base_maps2"; )
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	REDUX_GAME_WIDGET
+}
+
+#undef MENU_NAME 	#define MENU_NAME		"base_maps2"
+#undef MENU_TITLE 	#define MENU_TITLE		"BASE MAPS"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+	onRequestClose
+	{
+		open "class";
+	}
+
+    REDUX_BUTTON( 0, "RUNDOWN", exec "devmap mp_rundown"; )
+	REDUX_BUTTON( 1, "RUST", exec "devmap mp_rust"; )
+	REDUX_BUTTON( 2, "SCRAPYARD", exec "devmap mp_boneyard"; )
+	REDUX_BUTTON( 3, "SKIDROW", exec "devmap mp_nightshift"; )
+	REDUX_BUTTON( 4, "SUB BASE", exec "devmap mp_subbase"; )
+	REDUX_BUTTON( 5, "TERMINAL", exec "devmap mp_terminal"; )
+	REDUX_BUTTON( 6, "UNDERPASS", exec "devmap mp_underpass"; )
+	REDUX_BUTTON( 7, "WASTELAND", exec "devmap mp_brecourt"; )
+
+	REDUX_BUTTON( 10, "PREVIOUS PAGE", open "base_maps"; )
+
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	REDUX_GAME_WIDGET
+}
+
+#undef MENU_NAME 	#define MENU_NAME		"dlc_maps"
+#undef MENU_TITLE 	#define MENU_TITLE		"DLC MAPS"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+	onRequestClose
+	{
+		open "class";
+	}
+
+	REDUX_BUTTON( 0, "BAILOUT", exec "devmap mp_complex"; )
+	REDUX_BUTTON( 1, "CRASH", exec "devmap mp_crash"; )
+	REDUX_BUTTON( 2, "OVERGROWN", exec "devmap mp_overgrown"; )
+	REDUX_BUTTON( 3, "SALVAGE", exec "devmap mp_compact"; )
+	REDUX_BUTTON( 4, "STORM", exec "devmap mp_storm"; )
+	REDUX_BUTTON( 5, "CARNIVAL", exec "devmap mp_abandon"; )
+	REDUX_BUTTON( 6, "FUEL", exec "devmap mp_fuel2"; )
+	REDUX_BUTTON( 7, "STRIKE", exec "devmap mp_strike"; )
+	REDUX_BUTTON( 8, "TRAILERPARK", exec "devmap mp_trailerpark"; )
+	REDUX_BUTTON( 9, "VACANT", exec "devmap mp_vacant"; )
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	REDUX_GAME_WIDGET
+}
+
+#undef MENU_NAME 	#define MENU_NAME		"custom_maps"
+#undef MENU_TITLE 	#define MENU_TITLE		"CUSTOM MAPS"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+	onRequestClose
+	{
+		open "class";
+	}
+
+	REDUX_BUTTON( 0, "CARRIER", exec "devmap mp_bo2carrier"; )
+	REDUX_BUTTON( 1, "FROST", exec "devmap mp_bo2frost"; )
+	REDUX_BUTTON( 2, "VILLAGE", exec "devmap mp_vil_blops"; )
+	REDUX_BUTTON( 3, "WETWORK", exec "devmap mp_cargoship"; )
+	REDUX_BUTTON( 4, "FIRING RANGE", exec "devmap mp_firingrange"; )
+	REDUX_BUTTON( 5, "NUKETOWN", exec "devmap mp_nuked"; )
+	REDUX_BUTTON( 6, "OILRIG", exec "devmap oilrig"; )
+	REDUX_BUTTON( 7, "PAINTBALL", exec "devmap mp_bo2paintball"; )
+	REDUX_BUTTON( 8, "YEMEN", exec "devmap mp_bo2yemen"; )
+	REDUX_BUTTON( 9, "HIJACKED", exec "devmap mp_box_hijacked"; )
+
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	REDUX_GAME_WIDGET
+}
+
+#undef MENU_NAME 	#define MENU_NAME		"streak_options"
+#undef MENU_TITLE 	#define MENU_TITLE		"STREAK OPTIONS"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+	onRequestClose
+	{
+		open "class";
+	}
+
+	REDUX_BUTTON( 0, "UAV", 				exec "openscriptmenu killstreak_binds streak:uav"; )
+	REDUX_BUTTON( 1, "CARE PACKAGE", 		exec "openscriptmenu killstreak_binds streak:airdrop"; )
+	REDUX_BUTTON( 2, "SENTRY GUN", 			exec "openscriptmenu killstreak_binds streak:sentry"; )
+	REDUX_BUTTON( 3, "PREDATOR MISSILE", 	exec "openscriptmenu killstreak_binds streak:predator_missile"; )
+	REDUX_BUTTON( 4, "PRECISION AIRSTRIKE", exec "openscriptmenu killstreak_binds streak:precision_airstrike"; )
+	REDUX_BUTTON( 5, "EMERGENCY AIRDROP", 	exec "openscriptmenu killstreak_binds streak:airdrop_mega"; )
+	REDUX_BUTTON( 6, "CHOPPER GUNNER", 		exec "openscriptmenu killstreak_binds streak:helicopter_minigun"; )
+	REDUX_BUTTON( 7, "AC-130", 				exec "openscriptmenu killstreak_binds streak:ac130"; )
+	REDUX_BUTTON( 8, "EMP", 				exec "openscriptmenu killstreak_binds streak:emp"; )
+
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	REDUX_GAME_WIDGET
+}
+
+#undef MENU_NAME 	#define MENU_NAME		"dvar_options"
+#undef MENU_TITLE 	#define MENU_TITLE		"DVAR OPTIONS"
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+	onRequestClose
+	{
+		open "class";
+	}
+
+	REDUX_SLIDER( 1, "JUMP HEIGHT", "jump_height", 0, 1000, 39, ;, 1 )
+	REDUX_SLIDER( 2, "FORWARD SPEED", "g_speed", 0, 500, 190, ;, 1 )
+	REDUX_SLIDER( 3, "BACK SPEED", "player_backSpeedScale", 0, 20, 0.7, ;, 1 )
+	REDUX_SLIDER( 4, "GRAVITY", "g_gravity", 0, 1000, 800, ;, 1 )
+
+	REDUX_BUTTON( 10, "RESET DVARS",            exec "resetdvars"; )
+
+	
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	REDUX_GAME_WIDGET
+}

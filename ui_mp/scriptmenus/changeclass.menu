@@ -1,0 +1,43 @@
+#include "ui/menudef.h"
+#include "ui_mp/common/redux.inc"
+#include "ui_mp/common/cac.inc"
+#include "ui_mp/common/loadout.inc"
+
+#define MENU_NAME					"changeclass"
+#define MENU_TITLE					"CLASS OPTIONS"
+		
+#define REDUX_CUSTOM_CLASS( idx, class ) \
+		REDUX_BUTTON_ALL( idx, getPlayerData( "customClasses", ( idx - 1.25 ), "name" ), scriptmenuresponse class, 1, UPDATE_CLASS_FOCUS( idx - 1.25 ), ;, 0 )
+
+menudef
+{
+	REDUX_INGAME_MENU( true )
+
+	#undef CHOICE_GAMEPAD_Y		#define CHOICE_GAMEPAD_Y			3.5
+	#undef CHOICE_Y_SIZE		#define CHOICE_Y_SIZE				22
+	#undef CHOICE_Y_SPACING		#define CHOICE_Y_SPACING			( CHOICE_Y_SIZE + 2 )
+
+	REDUX_BUTTON_ALL( 0, "CREATE A CLASS", open "loadout";, 1, UPDATE_CAC_FOCUS;, ;, 0 )
+	REDUX_SEPARATOR( 1 )
+	REDUX_CUSTOM_CLASS( 1.25, "custom1" )
+	REDUX_CUSTOM_CLASS( 2.25, "custom2" )
+	REDUX_CUSTOM_CLASS( 3.25, "custom3" )
+	REDUX_CUSTOM_CLASS( 4.25, "custom4" )
+	REDUX_CUSTOM_CLASS( 5.25, "custom5" )
+	REDUX_CUSTOM_CLASS( 6.25, "custom6" )
+	REDUX_CUSTOM_CLASS( 7.25, "custom7" )
+	REDUX_CUSTOM_CLASS( 8.25, "custom8" )
+	REDUX_CUSTOM_CLASS( 9.25, "custom9" )
+	REDUX_CUSTOM_CLASS( 10.25, "custom10" )
+	REDUX_CUSTOM_CLASS( 11.25, "custom11" )
+	REDUX_CUSTOM_CLASS( 12.25, "custom12" )
+	REDUX_CUSTOM_CLASS( 13.25, "custom13" )
+	REDUX_CUSTOM_CLASS( 14.25, "custom14" )
+	REDUX_CUSTOM_CLASS( 15.25, "custom15" )
+}
+
+menudef
+{
+	REDUX_INGAME_SUB
+	IW4_LOADOUT
+}
