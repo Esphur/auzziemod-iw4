@@ -123,12 +123,9 @@ onPlayerSpawned()
 		    self childthread sustainAmmo();
 		    self childthread rememberFunc();
 		    self childthread deathBarrierFix();
-			self redux\functions::forceSpawn();
-			self redux\botfuncs::botForceSpawn();
-			self redux\functions::classChangeWatch();
-			setDvar( "bots_play_move", false );
-	        setDvar( "bots_play_knife", false );
-	        setDvar( "bots_play_fire", false );
+		    self redux\functions::forceSpawn();
+		    self redux\botfuncs::botForceSpawn();
+		    self redux\functions::classChangeWatch();
 
 		if ( self isTestClient() )
 			self childthread botLogPosition();
