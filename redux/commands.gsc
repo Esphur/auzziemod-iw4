@@ -21,7 +21,6 @@ init()
 	_["loadpos"] = redux\functions::loadPos;
 
 	_["roundreset"] = redux\functions::sndRoundReset;
-	//_["resetdvars"] = redux\dvars::resetDvars;
 	_["altswap"] = redux\functions::altSwapToggle;
 
 	foreach ( name, func in _ )
