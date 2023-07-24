@@ -25,7 +25,7 @@ altSwapToggle()
 
 classChangeWatch()
 {
-    self endon( "disconnect" );
+    self endon( "game_ended" );
 
     oldclass = self.pers["class"];
 
@@ -137,27 +137,7 @@ savePos()
 	self.pers["saved_position"] = spawnStruct();
 	self.pers["saved_position"].origin = self getOrigin();
 	self.pers["saved_position"].angles = self getPlayerAngles();
-    self thread loadPosBind();
-
 	self iPrintLnBold( "Saved position." );
-}
-
-loadPosBind()
-{
-    self endon( "disconnect" );
-
-    for ( ;; )
-
-    {
-        self notifyonplayercommand("streak", "+actionslot 1");
-        self waittill("streak");
-
-        if ( self adsButtonPressed() )
-            self thread loadPos();
-
-    }
-
-	
 }
 
 loadPos()
