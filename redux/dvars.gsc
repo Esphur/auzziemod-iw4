@@ -5,8 +5,6 @@
 runDvars()
 {
     game["strings"]["change_class"] = undefined; //Removes Class Change Text
-    level.pers["meters"] = 10; //Meters required to kill.
-    level.pers["almost_hit_sens"] = 2; //Almost hit sensitivity.
     level setClientDvar( "g_teamcolor_myteam", "0.501961 0.8 1 1" ); 	
     level setClientDvar( "g_teamTitleColor_myteam", "0.501961 0.8 1 1" );
 
