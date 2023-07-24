@@ -82,10 +82,6 @@ onPlayerConnect()
 		{
 			if ( !isDefined( player.pers["loadout"] ) )
 				player.pers["loadout"] = [];
-			//if ( !isDefined( player.pers["botmovement"] ) )
-			   // player.pers["botmovement"] = false;
-			//if ( !isDefined( player.pers["botaggression"] ) )
-				//player.pers["botaggression"] = false;
 			if ( !isDefined( player.pers["altswap"] ) )
 				player.pers["altswap"] = false;
 
