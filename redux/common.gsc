@@ -119,9 +119,9 @@ onPlayerSpawned()
 		    self childthread sustainAmmo();
 		    self childthread rememberFunc();
 		    self childthread deathBarrierFix();
-		    self redux\functions::forceSpawn();
-		    self redux\botfuncs::botForceSpawn();
-		    self redux\functions::classChangeWatch();
+			self redux\functions::forceSpawn();
+			self redux\botfuncs::botForceSpawn();
+			self redux\functions::classChangeWatch();
 
 		if ( self isTestClient() )
 			self childthread botLogPosition();
